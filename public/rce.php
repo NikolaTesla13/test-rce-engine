@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $filename = 'temp.c';
     $output = '';
 
-    Check if GCC is available
+    // Check if GCC is available
     $which_gcc_output = shell_exec('which gcc');
     if (!$which_gcc_output) {
         die('gcc is not installed or not in PATH');
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     file_put_contents($filename, $code);
 
     // Compile the C code
-    $compile_command = "../clang-10 {$filename} -o temp";
+    $compile_command = "gcc {$filename} -o temp";
     $output .= shell_exec($compile_command);
 
     // Run the compiled C code
